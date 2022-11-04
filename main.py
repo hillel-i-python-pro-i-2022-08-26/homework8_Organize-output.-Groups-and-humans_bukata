@@ -33,9 +33,7 @@ class DataProvider:
             group=group_name,
         )
 
-    def _generate_humans(
-        self, groups: T_GROUP_NAMES, amount_of_humans: int
-    ) -> T_HUMANS:
+    def _generate_humans(self, groups: T_GROUP_NAMES, amount_of_humans: int) -> T_HUMANS:
         members = []
         for _ in range(amount_of_humans):
             group_name = random.choice(groups)
@@ -73,8 +71,7 @@ def get_formatted_output(data: dict) -> str:
     Get output string. That can be used to print in console.
     """
     output = [
-        f'The group "{key}" has next {len(data[key])} participants: {", ".join(i for i in data[key])}'
-        for key in sorted(data)
+        f'The group "{key}" has next {len(data[key])} participants: {", ".join(data[key])}' for key in sorted(data)
     ]
     return "\n".join(output)
 
